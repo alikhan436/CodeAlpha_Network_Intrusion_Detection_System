@@ -1,0 +1,11 @@
+# Rule 1: Detect ICMP Ping Traffic (Potential Network Scanning)
+alert icmp any any -> any any (msg:"[NIDS ALERT] ICMP Ping Traffic Detected"; sid:1000001; rev:1;)
+
+# Rule 2: Detect HTTP SQL Injection Attempt in GET Parameters
+alert tcp any any -> any 80 (msg:"[NIDS ALERT] SQL Injection Attempt Detected"; content:"SELECT"; nocase; sid:1000002; rev:1;)
+
+# Rule 3: Detect SSH Brute Force / Port Scan Traffic on Port 22
+alert tcp any any -> any 22 (msg:"[NIDS ALERT] SSH Connection Attempt"; flags:S; sid:1000003; rev:1;)
+
+# Rule 4: Detect Sensitive File Access Attempts (/etc/passwd)
+alert tcp any any -> any 80 (msg:"[NIDS ALERT] Unauthorized Directory Traversal Attempt"; content:"/etc/passwd"; sid:1000004; rev:1;)

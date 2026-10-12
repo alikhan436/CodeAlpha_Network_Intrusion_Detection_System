@@ -1,0 +1,26 @@
+1
+00:00:00,000 --> 00:00:04,000
+Task 4: Network Intrusion Detection System
+Signature-based detection with Snort rules
+
+2
+00:00:04,000 --> 00:00:15,000
+local.rules - custom detection signatures:
+1000001 ICMP ping | 1000002 SQL injection (SELECT)
+1000003 SSH connection attempt | 1000004 /etc/passwd access
+
+3
+00:00:15,000 --> 00:00:25,000
+nids_simulator.py mimics the Snort engine:
+case-insensitive regex matching on each simulated packet
+
+4
+00:00:25,000 --> 00:00:33,000
+Run: python nids_simulator.py
+Each malicious packet raises an ALERT with its Rule SID
+Normal login traffic: [STATUS]: Traffic Clean
+
+5
+00:00:33,000 --> 00:00:43,000
+Signature rules successfully flag malicious payloads
+before they reach the application layer
